@@ -1,6 +1,7 @@
 import './Home.css';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
+import Header from './components/Header/Header';
 
 function Home() {
   const mattSmells = () => {
@@ -9,7 +10,7 @@ function Home() {
 
   return (
     <div className="home-background">
-      HI
+      <Header></Header>
       <Link to="/chat">
         <Button variant="contained" onClick={mattSmells}>
           go to chat
