@@ -1,5 +1,6 @@
 const CAT_JOKE = 'Cat joke';
 const CAT_FACT = 'Cat fact';
+const MORE_INFO = 'Tell me more';
 
 const catJokeExamples = [
   'I want a cat joke',
@@ -25,6 +26,12 @@ const catFactExamples = [
   'Supply me with a serious fact about felines',
   'I wish to know more about the organism felis catus',
   'Please enrich my knowledge on cats',
+];
+
+const moreInfoExamples = [
+  'Tell me more about this cat breed',
+  'What can you tell me about the american curl',
+  'I want to know about about the burmilla',
 ];
 
 const exampleFactory = (label, examples) => {
