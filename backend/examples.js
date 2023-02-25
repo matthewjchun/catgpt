@@ -1,4 +1,66 @@
-const cohere = require('cohere-ai');
-cohere.init('<<apiKey>>');
+CAT_JOKE = 'Cat joke';
+CAT_FACT = 'Cat fact';
 
-const response = await cohere.classify(inputs, examples);
+catJokeExamples = [
+  {
+    label: CAT_JOKE,
+    text: 'I want a cat joke',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'Can I have a cat joke',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'I want a random cat joke',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'Cat joke please',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'Cat joke',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'Joke about a cat',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'Joke about cats please',
+  },
+  {
+    label: CAT_JOKE,
+    text: 'Supply me with a playful quip pertaining a feline creatue',
+  },
+];
+
+catFactExamples = [
+  {
+    label: CAT_FACT,
+    text: 'I want a cat fact',
+  },
+  {
+    label: CAT_FACT,
+    text: 'Can I have a cat fact',
+  },
+  {
+    label: CAT_FACT,
+    text: 'I want a random cat fact',
+  },
+  {
+    label: CAT_FACT,
+    text: 'Cat fact please',
+  },
+  {
+    label: CAT_FACT,
+    text: 'Cat fact',
+  },
+  {
+    label: CAT_FACT,
+    text: 'Fact about a cat',
+  },
+];
+
+examples = [...catJokeExamples, ...catFactExamples];
