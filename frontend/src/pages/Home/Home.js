@@ -8,7 +8,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="home-background">
       HI
       <Link to="/chat">
         <Button variant="contained" onClick={mattSmells}>
