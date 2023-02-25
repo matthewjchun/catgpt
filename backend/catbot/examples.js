@@ -10,9 +10,9 @@ const catJokeExamples = [
   'Joke about a cat',
   'Joke about cats please',
   'Supply me with a playful quip pertaining a feline creature',
-  'tell me a cat joke', 
+  'tell me a cat joke',
   'make me laugh on the subject of cats',
-  'entertain me with joyous jests of the felis catus variety'
+  'entertain me with joyous jests of the felis catus variety',
 ];
 
 const catFactExamples = [
@@ -24,7 +24,7 @@ const catFactExamples = [
   'Fact about a cat',
   'Supply me with a serious fact about felines',
   'I wish to know more about the organism felis catus',
-  'Please enrich my knowledge on cats'
+  'Please enrich my knowledge on cats',
 ];
 
 const exampleFactory = (label, examples) => {
