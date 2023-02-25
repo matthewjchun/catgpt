@@ -1,7 +1,7 @@
-CAT_JOKE = 'Cat joke';
-CAT_FACT = 'Cat fact';
+const CAT_JOKE = 'Cat joke';
+const CAT_FACT = 'Cat fact';
 
-catJokeExamples = [
+const catJokeExamples = [
   {
     label: CAT_JOKE,
     text: 'I want a cat joke',
@@ -36,7 +36,7 @@ catJokeExamples = [
   },
 ];
 
-catFactExamples = [
+const catFactExamples = [
   {
     label: CAT_FACT,
     text: 'I want a cat fact',
@@ -63,4 +63,6 @@ catFactExamples = [
   },
 ];
 
-examples = [...catJokeExamples, ...catFactExamples];
+const examples = [...catJokeExamples, ...catFactExamples];
+
+export default examples;

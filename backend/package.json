@@ -12,5 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "cohere-ai": "^5.1.0"
-  }
+  },
+  "type": "module"
 }
