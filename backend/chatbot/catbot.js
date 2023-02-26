@@ -2,6 +2,7 @@ const cohere = require('cohere-ai');
 const { examples } = require('./examples');
 const { catBreeds } = require('./data/breeds');
 const { catJokes } = require('./data/jokes');
+const axios = require('axios');
 
 module.exports.request = async (inputs) => {
   cohere.init('sJxTdjABsvuON4mBFAVzzGtJp7uXPa1umiC2PEPG');
@@ -17,9 +18,16 @@ const getRandomCatJoke = () => {
   return catJokes[Math.floor(Math.random() * catJokes.length)];
 };
 
-module.exports.createResponse = (intent) => {
+const getRandomCatFact = async () => {
+  catFact = await axios.get('https://catfact.ninja/fact');
+  return catFact.data.fact;
+};
+
+module.exports.createResponse = async (intent) => {
   if (intent === 'Cat joke') {
     return getRandomCatJoke();
+  } else if (intent === 'Cat fact') {
+    return await getRandomCatFact();
   }
   // const breed = catBreeds.find((breed) => inputs[0].toLowerCase().includes(breed));
   // if (breed && res.prediction === 'Tell me more') {

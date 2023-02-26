@@ -18,13 +18,12 @@ app.listen(port, () => {
 
 //
 app.post('/chat', async (req, res) => {
-  // const query = req.body.query;
   const input = req.body.query;
 
   try {
     const cohereResponse = await catbot.request([input]);
     const intent = cohereResponse[0].prediction;
-    const catBotResponse = catbot.createResponse(intent);
+    const catBotResponse = await catbot.createResponse(intent);
     console.log(catBotResponse);
     res.send(catBotResponse);
   } catch (e) {
