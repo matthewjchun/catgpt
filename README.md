@@ -16,6 +16,15 @@ In addition, CatGPT can give you:
 
 All you have to do is ask!
 
+### Examples
+
+- "Hello!"
+- "Goodbye!"
+- "Thank you!"
+- "Tell me a cat joke"
+- "I want a cat fact"
+- "What can you tell me about the Ragdoll cat?"
+
 ## How?
 
 CatGPT is made possible by using Cohere's Intent Recognition.
