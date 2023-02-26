@@ -25,7 +25,7 @@ function Landing() {
                         </CardContent>
                     </CardActionArea>
                     <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Link to="/chat">
+                        <Link to="/chat" style={{ textDecoration: 'none'}}>
                             <Button variant="outlined" endIcon={<ArrowOutwardIcon />}>
                                 Go to Chat
                             </Button>

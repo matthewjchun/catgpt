@@ -1,6 +1,4 @@
 import './Home.css';
-import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
 import Header from './components/Header/Header';
 import Landing from './components/Landing/Landing';
 

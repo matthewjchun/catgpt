@@ -1,5 +1,5 @@
 import './Messaging.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Input from '@mui/material/Input';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
@@ -9,10 +9,9 @@ import catAvi from '../../../../static/kitten1.png'
 import axios from 'axios'
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
-import Divider from '@mui/material/Divider';
+// import Divider from '@mui/material/Divider';
 import { pink, deepPurple } from '@mui/material/colors';
 
-// import { MessagesContext } from '../../../../contexts/messages';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -46,6 +45,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Messaging() {
     const [messages, setMessages] = useState([]);
     const [userMessage, setUserMessage] = useState('');
+
+    const userInput = useRef(null)
 
     const handleUpdateMessage = (e) => {
         setUserMessage(e.target.value);
@@ -96,7 +97,7 @@ function Messaging() {
                                     <p style={{ marginRight: '2vh' }} key={item.key}>
                                         {item.message}
                                     </p>
-                                    <Avatar sx={{ bgcolor: deepPurple[500] }}>MC</Avatar>
+                                    <Avatar sx={{ bgcolor: deepPurple[500] }}>U</Avatar>
                                 </div>
                                 {/* <Divider variant="middle" /> */}
                             </div>
@@ -110,7 +111,7 @@ function Messaging() {
                                     >
                                         <Avatar sx={{ bgcolor: pink[500] }} alt="CatGPT" src={catAvi} variant="rounded" />
                                     </StyledBadge>
-                                    <p style={{ marginLeft: '2vh' }} key={item.key}>
+                                    <p style={{ marginLeft: '2vh' }}>
                                         {item.message}
                                     </p>
                                 </div>
@@ -126,6 +127,7 @@ function Messaging() {
                     sx={{ width: '92%' }}
                     onChange={handleUpdateMessage}
                     value={userMessage}
+                    ref={userInput}
                 ></Input>
                 <Button variant="contained" sx={{ marginLeft: '5vh' }} onClick={handleSendMessage}>
                     <SendIcon />
