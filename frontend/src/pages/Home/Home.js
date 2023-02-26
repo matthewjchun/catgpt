@@ -5,9 +5,6 @@ import Header from './components/Header/Header';
 import Landing from './components/Landing/Landing';
 
 function Home() {
-  const mattSmells = () => {
-    console.log('stinky uhoh');
-  };
 
   return (
     <div className="home-background">

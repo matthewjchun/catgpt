@@ -1,6 +1,6 @@
 import './Landing.css';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardContent, CardMedia, Typography, CardActionArea, CardActions } from '@mui/material';
+import { Button, Card, CardContent, Typography, CardActionArea, CardActions } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import kitten from '../../../../static/kitten1.png'
 

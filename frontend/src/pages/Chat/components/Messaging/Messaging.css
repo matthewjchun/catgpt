@@ -1,0 +1,13 @@
+.messaging-outline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* max-width: 80%; */
+    /* margin-left: 10%;
+    margin-right: 10%; */
+}
+
+.messaging-input {
+    margin-left: 10%;
+    margin-right: 10%;
+}
