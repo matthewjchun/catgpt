@@ -24,16 +24,44 @@ const getRandomCatFact = async () => {
   return catFact.data.fact;
 };
 
+const nekofy = (res) => {
+  const catTalk = [
+    ' *meow* ',
+    ' ~nyah~ ',
+    ' ~prrr~ ',
+    ' =^_^= ',
+    ' (=^･ω･^=) ',
+    ' *mEEEwr* ',
+    ' ~mew~ ',
+  ];
+  const newResponse = res.split(' ').map((word) => {
+    if (Math.random() < 0.1) {
+      return word + catTalk[Math.floor(Math.random() * catTalk.length)];
+    }
+    return word + ' ';
+  });
+
+  return newResponse.join('');
+};
+
 module.exports.createResponse = async (input, intent) => {
+  let response = '';
+
   if (intent === 'Cat joke') {
-    return getRandomCatJoke();
+    response = getRandomCatJoke();
   } else if (intent === 'Cat fact') {
-    return await getRandomCatFact();
+    response = await getRandomCatFact();
   } else if (intent === 'Tell me more') {
     const breed = catBreeds.find((breed) => input.toLowerCase().includes(breed.toLowerCase()));
     if (breed) {
-      return catBreedFacts[breed];
+      response = catBreedFacts[breed];
     }
-    return `What breed do you want to know more about?`;
+    resposne = `What breed do you want to know more about?`;
+  } else {
+    response = `Sorry, I'm not sure what you mean.`;
   }
+
+  response = nekofy(response);
+
+  return response;
 };
