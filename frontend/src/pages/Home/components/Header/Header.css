@@ -5,14 +5,14 @@
   margin-bottom: 5vh;
   background-color: #598392;
   text-align: left;
-  padding-left: 1vw;
+  /* padding-left: 1vw; */
   font-family: 'Bungee', cursive;
   color: #eff6e0;
   margin-top: 1vh;
 }
 
 .title-container {
-  margin-left: 15vh;
+  /* margin-left: 15vh; */
   display: flex;
   flex-direction: row;
   align-items: center;
