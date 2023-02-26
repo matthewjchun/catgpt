@@ -1,29 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
 .header-container {
-    font-size: 2.5vw;
-    margin-bottom: 5vh;
-    background-color: #598392;
-    text-align: left;
-    padding-left: 1vw;
-    font-family: 'Bungee', cursive;
-    color: #EFF6E0;
+  font-size: 2.5vw;
+  margin-bottom: 5vh;
+  background-color: #598392;
+  text-align: left;
+  padding-left: 1vw;
+  font-family: 'Bungee', cursive;
+  color: #eff6e0;
+  margin-top: 1vh;
 }
 
 .title-container {
-    margin-left: 15vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  margin-left: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-logo {
-    max-width: 5vh;
-    margin-left: 1vh;
-    transform: rotate(13deg);
+  max-width: 5vh;
+  margin-left: 1vh;
+  transform: rotate(13deg);
 }
 
 .header-logo::selection {
-    color: none;
-    background: none;
+  color: none;
+  background: none;
 }
