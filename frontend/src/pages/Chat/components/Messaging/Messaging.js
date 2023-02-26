@@ -6,11 +6,14 @@ import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
 import catAvi from '../../../../static/kitten1.png'
-import { MessagesContext } from '../../../../contexts/Messages'
 import axios from 'axios'
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
-import { pink } from '@mui/material/colors';
+import { pink, deepPurple } from '@mui/material/colors';
+
+import { UserMessagesContext } from '../../../../contexts/UserMessages'
+import { CatMessagesContext } from '../../../../contexts/CatMessages';
+import { JointMessagesContext } from '../../../../contexts/JointMessages';
 
 let nextId = 0
 
@@ -44,35 +47,48 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function Messaging() {
-    const [messages, setMessages] = useContext(MessagesContext)
-    const [userMessage, setUserMessage] = useState("")
+    const [userMessages, setUserMessages] = useContext(UserMessagesContext)
+    const [catMessages, setCatMessages] = useContext(CatMessagesContext)
+    const [jointMessages, setJointMessages] = useContext(JointMessagesContext)
+    const [userInputMessage, setUserInputMessage] = useState("")
 
     const handleUpdateMessage = (e) => {
-        setUserMessage(e.target.value)
+        setUserInputMessage(e.target.value)
     }
 
-    const handleSendMessage = (e) => {
+    const handleSendMessage = async (e) => {
         e.preventDefault()
-        setMessages([...messages, { key: nextId++, message: userMessage }])
-        console.log(messages)
-        setUserMessage('')
-        handleCatResponse()
+        await setUserMessages([...userMessages, { key: nextId++, message: userInputMessage }])
+        await handleCatResponse()
+        setUserInputMessage('')
+        console.log(userMessages)
+        // setJointMessages([...jointMessages,
+        // {
+        //     key: userMessages.splice(-1)[0].key,
+        //     message: userInputMessage
+        // },
+        // {
+        //     key: catMessages.splice(-1)[0].key,
+        //     message: catMessages.splice(-1)[0].message
+        // }])
+        console.log(jointMessages)
     }
 
     const handleCatResponse = async () => {
         const req = {
-            query: userMessage
+            query: userInputMessage
         }
 
         await axios.post("http://localhost:4000/chat", req)
             .then((response) => {
                 console.log('Chatbot responded successfully: ', response.data);
-                setMessages([...messages, { key: nextId++, message: response.data }])
+                setCatMessages([...catMessages, { key: nextId++, message: response.data }])
             })
             .catch((error) => {
                 console.log('Error:', error);
             })
     }
+
 
     return (
         <div className='messaging-outline'>
@@ -83,7 +99,17 @@ function Messaging() {
                     marginBottom: '5vh',
                     backgroundColor: '#EFF6E0',
                 }}>
-                    {messages.map(item =>
+                    {userMessages.map(item =>
+                    (
+                        <div className="user-message">
+                            <p className='user-text' key={item.key}>{item.message}</p>
+                            <Avatar sx={{ bgcolor: deepPurple[500] }} alt="CatGPT">MC</Avatar>
+                        </div>
+                    )
+                    )
+
+                    }
+                    {jointMessages.map(item =>
                         item.key / 2 === 0 ?
                             (
                                 <div className="user-message">
@@ -113,8 +139,8 @@ function Messaging() {
                 </Box>
             </div>
             <form className='messaging-input' onSubmit={handleSendMessage} >
-                <Input placeholder='Ask CatGPT!' sx={{ width: "92%" }} onChange={handleUpdateMessage} value={userMessage} ></Input>
-                <Button variant='contained' sx={{ marginLeft: "5vh" }} onClick={handleSendMessage}><SendIcon /></Button>
+                <Input placeholder='Ask CatGPT!' sx={{ width: "92%" }} onChange={handleUpdateMessage} value={userInputMessage} ></Input>
+                <Button variant='contained' sx={{ marginLeft: "5vh" }} onClick={handleSendMessage} ><SendIcon /></Button>
             </form>
         </div>
     )

@@ -15,5 +15,10 @@
 .user-message {
     display: flex;
     margin-left: 3vh;
-    align-self: flex-end;
+    justify-content: flex-end;
+    margin-right: 3vh;
+}
+
+.user-text {
+    margin-right: "2vh";
 }
