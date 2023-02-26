@@ -11,3 +11,9 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+
+.user-message {
+    display: flex;
+    margin-left: 3vh;
+    align-self: flex-end;
+}
