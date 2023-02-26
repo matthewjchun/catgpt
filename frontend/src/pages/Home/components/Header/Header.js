@@ -1,5 +1,5 @@
 import './Header.css';
-import logo from '../../../../paw-logo.png'
+import logo from '../../../../static/paw-logo.png'
 
 function Header() {
 

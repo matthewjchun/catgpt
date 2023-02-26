@@ -3,9 +3,7 @@
 .header-container {
     font-size: 2.5vw;
     margin-bottom: 5vh;
-    background-color: #124559;
-    /* background-color: #01161E; */
-    /* background-color: #598392; */
+    background-color: #598392;
     text-align: left;
     padding-left: 1vw;
     font-family: 'Bungee', cursive;
@@ -13,7 +11,7 @@
 }
 
 .title-container {
-    margin-left: 10vh;
+    margin-left: 15vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
