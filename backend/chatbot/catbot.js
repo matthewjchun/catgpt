@@ -2,6 +2,7 @@ const cohere = require('cohere-ai');
 const { examples } = require('./examples');
 const { catBreeds } = require('./data/breeds');
 const { catJokes } = require('./data/jokes');
+const { catBreedFacts } = require('./data/facts');
 const axios = require('axios');
 
 module.exports.request = async (inputs) => {
@@ -23,29 +24,16 @@ const getRandomCatFact = async () => {
   return catFact.data.fact;
 };
 
-module.exports.createResponse = async (intent) => {
+module.exports.createResponse = async (input, intent) => {
   if (intent === 'Cat joke') {
     return getRandomCatJoke();
   } else if (intent === 'Cat fact') {
     return await getRandomCatFact();
+  } else if (intent === 'Tell me more') {
+    const breed = catBreeds.find((breed) => input.toLowerCase().includes(breed.toLowerCase()));
+    if (breed) {
+      return catBreedFacts[breed];
+    }
+    return `What breed do you want to know more about?`;
   }
-  // const breed = catBreeds.find((breed) => inputs[0].toLowerCase().includes(breed));
-  // if (breed && res.prediction === 'Tell me more') {
-  //   console.log(breed);
-  // }
 };
-
-// (async () => {
-//   const inputs = [
-//     'tell me more about the korat breed',
-//     // 'make me laugh on the subject of cats',
-//     // 'give me an interesting tidbit pertaining to maine coon',
-//   ];
-
-//   const res = await request(inputs);
-//   const breed = catBreeds.find((breed) => inputs[0].toLowerCase().includes(breed));
-
-//   if (breed && res.prediction === 'Tell me more') {
-//     console.log(breed);
-//   }
-// })();
