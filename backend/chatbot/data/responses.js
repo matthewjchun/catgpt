@@ -1,3 +1,28 @@
+module.exports.catThanks = [
+  "You're purrfectly welcome",
+  'No claw-blem, happy to help',
+  'Anytime, fur sure',
+  'Furry glad to assist',
+  'My pleasure, meowtiful!',
+  "It was nothing, whisker you're welcome",
+  "You're the cat's meow",
+  'No worries, fur-iend',
+  "Don't mention it, whisker wish",
+  'Always happy to lend a paw',
+];
+
+module.exports.catGoodbye = [
+  'Meow for now',
+  'Purrs and whiskers',
+  'Feline fine',
+  'See you on the catwalk',
+  'Purrfectly good farewell',
+  'Have a mice day',
+  'Stay pawsome',
+  'Cat you later',
+  'Take it one purr at a time',
+];
+
 module.exports.catGreetings = [
   `Meow there!`,
   `Purrrrfect day, isn't it?`,

@@ -4,6 +4,42 @@ const CAT_JOKE = 'Cat joke';
 const CAT_FACT = 'Cat fact';
 const MORE_INFO = 'Tell me more';
 const GREETING = 'Greeting';
+const THANKS = 'Thanks';
+const GOODBYE = 'Goodbye';
+
+const goodbyeExamples = [
+  'Goodbye',
+  'Bye',
+  'Later',
+  'See you later',
+  'See ya',
+  'So long',
+  'Farewell',
+  'Take care',
+  'Have a good one',
+  'Catch you later',
+  'Peace',
+  'Pce',
+];
+
+const thanksExamples = [
+  'Thank you',
+  'Thanks',
+  'Thanks!',
+  'Thanks CatGPT',
+  'Many thanks',
+  'Much appreciated',
+  'I appreciate it',
+  'Thank you so much',
+  'Thanks a lot',
+  'Thanks a million',
+  'Thank you kindly',
+  'Thank you very much',
+  'Many thanks for your help',
+  "I can't thank you enough",
+  "I'm grateful for your help",
+  "You're a lifesaver",
+];
 
 const catJokeExamples = [
   'I want a cat joke',
@@ -62,7 +98,15 @@ const greetingExamples = [
 ];
 
 const exampleFactory = (label, examples) => {
-  return examples.map((example) => {
+  const caseExamples = [];
+
+  examples.map((example) => {
+    if (example.length <= 7) {
+      caseExamples.push(example, example.toLowerCase(), example.toUpperCase());
+    }
+  });
+
+  return caseExamples.map((example) => {
     return { label, text: example };
   });
 };
@@ -72,4 +116,6 @@ module.exports.examples = [
   ...exampleFactory(CAT_FACT, catFactExamples),
   ...exampleFactory(MORE_INFO, moreInfoExamples),
   ...exampleFactory(GREETING, greetingExamples),
+  ...exampleFactory(THANKS, thanksExamples),
+  ...exampleFactory(GOODBYE, goodbyeExamples),
 ];

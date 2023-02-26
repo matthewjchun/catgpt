@@ -1,7 +1,13 @@
 const cohere = require('cohere-ai');
 const { examples } = require('./examples');
 const { catBreeds } = require('./data/breeds');
-const { catGreetings, catJokes, catBreedFacts } = require('./data/responses');
+const {
+  catGreetings,
+  catJokes,
+  catBreedFacts,
+  catThanks,
+  catGoodbye,
+} = require('./data/responses');
 const axios = require('axios');
 
 module.exports.request = async (inputs) => {
@@ -14,8 +20,16 @@ module.exports.request = async (inputs) => {
   return response.body.classifications;
 };
 
+const getRandomCatGoodbye = () => {
+  return catGoodbye[Math.floor(Math.random() * catGoodbye.length)];
+};
+
 const getRandomCatJoke = () => {
   return catJokes[Math.floor(Math.random() * catJokes.length)];
+};
+
+const getRandomCatThanks = () => {
+  return catThanks[Math.floor(Math.random() * catThanks.length)];
 };
 
 const getRandomCatGreeting = () => {
@@ -63,6 +77,10 @@ module.exports.createResponse = async (input, intent) => {
     }
   } else if (intent === 'Greeting') {
     response = getRandomCatGreeting();
+  } else if (intent === 'Thanks') {
+    response = getRandomCatThanks();
+  } else if (intent === 'Goodbye') {
+    response = getRandomCatGoodbye();
   } else {
     response = `Sorry, I'm not sure what you mean.`;
   }
