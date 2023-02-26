@@ -1,5 +1,5 @@
 import './Messaging.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Input from '@mui/material/Input';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
@@ -46,7 +46,7 @@ function Messaging() {
     const [messages, setMessages] = useState([]);
     const [userMessage, setUserMessage] = useState('');
 
-    const userInput = useRef(null)
+    const responseRef = useRef(null)
 
     const handleUpdateMessage = (e) => {
         setUserMessage(e.target.value);
@@ -88,6 +88,7 @@ function Messaging() {
                         backgroundColor: '#EFF6E0',
                         overflowY: 'auto',
                         overflowX: 'hidden',
+                        scrollbarWidth: 'none',
                     }}
                 >
                     {messages.map((item) =>
@@ -111,7 +112,7 @@ function Messaging() {
                                     >
                                         <Avatar sx={{ bgcolor: pink[500] }} alt="CatGPT" src={catAvi} variant="rounded" />
                                     </StyledBadge>
-                                    <p style={{ marginLeft: '2vh' }}>
+                                    <p style={{ marginLeft: '2vh' }} ref={responseRef}>
                                         {item.message}
                                     </p>
                                 </div>
@@ -124,12 +125,11 @@ function Messaging() {
             <form className="messaging-input" onSubmit={handleSendMessage}>
                 <Input
                     placeholder="Ask CatGPT!"
-                    sx={{ width: '92%' }}
+                    sx={{ width: '93%' }}
                     onChange={handleUpdateMessage}
                     value={userMessage}
-                    ref={userInput}
                 ></Input>
-                <Button variant="contained" sx={{ marginLeft: '5vh' }} onClick={handleSendMessage}>
+                <Button variant="contained" sx={{ marginLeft: '2%', width: "5%"}} onClick={handleSendMessage}>
                     <SendIcon />
                 </Button>
             </form>
