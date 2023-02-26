@@ -1,5 +1,5 @@
 import './Messaging.css';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Input from '@mui/material/Input';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
@@ -45,8 +45,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Messaging() {
     const [messages, setMessages] = useState([]);
     const [userMessage, setUserMessage] = useState('');
-
-    const responseRef = useRef(null)
 
     const handleUpdateMessage = (e) => {
         setUserMessage(e.target.value);
@@ -100,7 +98,6 @@ function Messaging() {
                                     </p>
                                     <Avatar sx={{ bgcolor: deepPurple[500] }}>U</Avatar>
                                 </div>
-                                {/* <Divider variant="middle" /> */}
                             </div>
                         ) : (
                             <div>
@@ -112,11 +109,10 @@ function Messaging() {
                                     >
                                         <Avatar sx={{ bgcolor: pink[500] }} alt="CatGPT" src={catAvi} variant="rounded" />
                                     </StyledBadge>
-                                    <p style={{ marginLeft: '2vh' }} ref={responseRef}>
+                                    <p style={{ marginLeft: '2vh' }}>
                                         {item.message}
                                     </p>
                                 </div>
-                                {/* <Divider variant="middle" /> */}
                             </div>
                         )
                     )}
