@@ -1,8 +1,7 @@
 const cohere = require('cohere-ai');
 const { examples } = require('./examples');
 const { catBreeds } = require('./data/breeds');
-const { catJokes } = require('./data/jokes');
-const { catBreedFacts } = require('./data/facts');
+const { catGreetings, catJokes, catBreedFacts } = require('./data/responses');
 const axios = require('axios');
 
 module.exports.request = async (inputs) => {
@@ -17,6 +16,10 @@ module.exports.request = async (inputs) => {
 
 const getRandomCatJoke = () => {
   return catJokes[Math.floor(Math.random() * catJokes.length)];
+};
+
+const getRandomCatGreeting = () => {
+  return catGreetings[Math.floor(Math.random() * catGreetings.length)];
 };
 
 const getRandomCatFact = async () => {
@@ -55,13 +58,15 @@ module.exports.createResponse = async (input, intent) => {
     const breed = catBreeds.find((breed) => input.toLowerCase().includes(breed.toLowerCase()));
     if (breed) {
       response = catBreedFacts[breed];
+    } else {
+      response = `What breed do you want to know more about?`;
     }
-    resposne = `What breed do you want to know more about?`;
+  } else if (intent === 'Greeting') {
+    response = getRandomCatGreeting();
   } else {
     response = `Sorry, I'm not sure what you mean.`;
   }
 
   response = nekofy(response);
-
   return response;
 };

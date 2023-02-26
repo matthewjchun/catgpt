@@ -3,6 +3,7 @@ const { catBreeds } = require('./data/breeds');
 const CAT_JOKE = 'Cat joke';
 const CAT_FACT = 'Cat fact';
 const MORE_INFO = 'Tell me more';
+const GREETING = 'Greeting';
 
 const catJokeExamples = [
   'I want a cat joke',
@@ -47,6 +48,19 @@ const moreInfoExamples = [
   ...catBreeds,
 ];
 
+const greetingExamples = [
+  'Hi',
+  'Hi CatGPT',
+  'Howdy',
+  'Hiya',
+  'Good morning',
+  'Good evening',
+  'Good afternoon',
+  'Greetings',
+  'Hey',
+  `What's up`,
+];
+
 const exampleFactory = (label, examples) => {
   return examples.map((example) => {
     return { label, text: example };
@@ -57,4 +71,5 @@ module.exports.examples = [
   ...exampleFactory(CAT_JOKE, catJokeExamples),
   ...exampleFactory(CAT_FACT, catFactExamples),
   ...exampleFactory(MORE_INFO, moreInfoExamples),
+  ...exampleFactory(GREETING, greetingExamples),
 ];
