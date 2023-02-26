@@ -2,6 +2,24 @@
 
 CatGPT is a cat-themed chatbot! Meow, meow!
 
+## Installation
+
+Before running the app, you'll want to set up the backend server
+
+```bash
+cd backend
+npm install
+node server.js
+```
+
+With the server running, you can set up the frontend
+
+```bash
+cd frontend
+npm install
+npm run
+```
+
 ## Usage
 
 www.foobarpleasedontforgettoreplacethis.com
