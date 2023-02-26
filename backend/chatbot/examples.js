@@ -36,13 +36,11 @@ const moreInfoExamples = [
 
 const exampleFactory = (label, examples) => {
   return examples.map((example) => {
-    return { label, example };
+    return { label, text: example };
   });
 };
 
-const examples = [
+module.exports.examples = [
   ...exampleFactory(CAT_JOKE, catJokeExamples),
   ...exampleFactory(CAT_FACT, catFactExamples),
 ];
-
-export default examples;

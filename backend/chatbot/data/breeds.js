@@ -1,5 +1,5 @@
 // 45 CFA recognized cat breeds
-const catBreeds = [
+module.exports.catBreeds = [
   'Abyssinian',
   'American Bobtail',
   'American Curl',

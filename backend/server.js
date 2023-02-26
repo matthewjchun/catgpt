@@ -1,6 +1,7 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const catbot = require('./chatbot/catbot');
 // import mongoose from 'mongoose'
 
 dotenv.config();
@@ -18,7 +19,15 @@ app.listen(port, () => {
 //
 app.post('/chat', async (req, res) => {
   // const query = req.body.query;
-  const query = 'tell me a cat joke';
-  const response = catbot.request([query]);
-  console.log(res);
+  const input = req.body.query;
+
+  try {
+    const cohereResponse = await catbot.request([input]);
+    const intent = cohereResponse[0].prediction;
+    const catBotResponse = catbot.createResponse(intent);
+    console.log(catBotResponse);
+    res.send(catBotResponse);
+  } catch (e) {
+    console.log(e);
+  }
 });
