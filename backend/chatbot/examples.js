@@ -53,6 +53,7 @@ const catJokeExamples = [
   'tell me a cat joke',
   'make me laugh on the subject of cats',
   'entertain me with joyous jests of the felis catus variety',
+  'do you have a cat joke?',
 ];
 
 const catFactExamples = [
@@ -103,6 +104,8 @@ const exampleFactory = (label, examples) => {
   examples.map((example) => {
     if (example.length <= 7) {
       caseExamples.push(example, example.toLowerCase(), example.toUpperCase());
+    } else {
+      caseExamples.push(example);
     }
   });
 
